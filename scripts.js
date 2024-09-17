@@ -121,59 +121,27 @@ document.addEventListener("DOMContentLoaded", function() {
     "How can I avoid social engineering attacks?": "Be cautious of unsolicited communications, don't share sensitive information, and verify the identity of people before responding.",
     "What is a password policy?": "A password policy is a set of rules designed to improve computer security by encouraging users to create strong, complex passwords.",
     "What is cybersecurity awareness training?": "Cybersecurity awareness training teaches employees or users how to recognize and avoid cybersecurity threats, like phishing and malware.",
-    "What is multifactor authentication (MFA)?": "MFA requires users to provide two or more verification factors to gain access to a system, such as a password and a security token.",
+    "What is multifactor authentication (MFA)?": "MFA requires users to provide two or more verification factors to gain access to a system, such as a password and a security token."
     };
 
-    function getResponse(userInput) {
-        userInput = userInput.toLowerCase();  // Convert input to lowercase for easier matching
-
-        // Loop through the responses and match keywords
-        for (let keyword in responses) {
-            if (userInput.includes(keyword.toLowerCase())) {
-                return responses[keyword];
-            }
-        }
-
-        return "Sorry, I don't have information on that. Please ask another question.";
+function getResponse(input) {
+        // Convert input to lowercase and remove extra spaces for easier matching
+        const cleanedInput = input.toLowerCase().trim();
+        return responses[cleanedInput] || "I'm sorry, I don't have an answer for that question.";
     }
 
-    function displayMessage(message, fromUser = true) {
-        const messageContainer = document.createElement("div");
-        messageContainer.classList.add("message");
-
-        const messageBubble = document.createElement("div");
-        messageBubble.classList.add("bubble");
-        messageBubble.textContent = message;
-
-        if (fromUser) {
-            messageContainer.classList.add("user-message");
-        } else {
-            messageContainer.classList.add("bot-message");
-        }
-
-        messageContainer.appendChild(messageBubble);
-        chatbox.appendChild(messageContainer);
-        chatbox.scrollTop = chatbox.scrollHeight;  // Scroll to the bottom
-    }
-
-    sendButton.addEventListener("click", function() {
-        const userInput = inputField.value.trim();
+    sendButton.addEventListener("click", function () {
+        const userInput = inputField.value;
         if (userInput) {
-            displayMessage(userInput, true);  // Display user's message
-
-            // Get bot response based on user input
-            const botResponse = getResponse(userInput);
-            setTimeout(() => {
-                displayMessage(botResponse, false);  // Display bot's response
-            }, 500);  // Simulate a delay
-
-            inputField.value = "";  // Clear input field
+            const response = getResponse(userInput);
+            chatbox.innerHTML += `<p><strong>You:</strong> ${userInput}</p>`;
+            chatbox.innerHTML += `<p><strong>Bot:</strong> ${response}</p>`;
+            inputField.value = ""; // Clear the input field after sending
         }
     });
 
-    // Allow sending the message with "Enter" key
-    inputField.addEventListener("keypress", function(event) {
-        if (event.key === "Enter") {
+    inputField.addEventListener("keypress", function (e) {
+        if (e.key === "Enter") {
             sendButton.click();
         }
     });
