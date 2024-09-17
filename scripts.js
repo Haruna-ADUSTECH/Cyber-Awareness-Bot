@@ -5,17 +5,6 @@ document.addEventListener("DOMContentLoaded", function() {
 
     // Updated responses object with 100 questions
     const responses = {
-        "firewall": "A firewall is a network security device that monitors and filters incoming and outgoing network traffic.",
-        "phishing": "Phishing is a type of cyberattack where attackers disguise as trustworthy entities to steal sensitive information.",
-        "malware": "Malware is malicious software designed to cause damage, disrupt, or gain unauthorized access to a computer system.",
-        "ransomware": "Ransomware is a type of malware that locks or encrypts files on a victim's system and demands payment for the decryption key.",
-        "antivirus": "An antivirus is software that detects, prevents, and removes malicious software from computers and networks.",
-        "cybersecurity": "Cybersecurity refers to the practice of protecting systems, networks, and programs from digital attacks.",
-        "data encryption": "Data encryption is the process of converting data into a code to prevent unauthorized access.",
-        "social engineering": "Social engineering is the manipulation of people into divulging confidential information or performing harmful actions.",
-        "password": "A strong password should be at least 12 characters long, including uppercase, lowercase, numbers, and symbols.",
-        "two-factor authentication": "Two-factor authentication adds an extra layer of security by requiring not just a password but also a second factor like a code or biometric verification.",
-        "What is cyber espionage?": "Cyber espionage involves the use of hacking to steal confidential or sensitive information from governments or organizations.",
     "What is cybersecurity governance?": "Cybersecurity governance refers to the processes and policies used to protect an organization's information systems and data.",
     "What is cyberwarfare?": "Cyberwarfare refers to the use of digital attacks by one nation-state to disrupt the computer systems of another.",
     "How can I secure my mobile device?": "Use a strong password, enable fingerprint or face ID, install apps only from trusted sources, and keep your device updated.",
