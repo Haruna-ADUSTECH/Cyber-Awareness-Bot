@@ -121,7 +121,7 @@ document.addEventListener("DOMContentLoaded", function() {
     "How can I avoid social engineering attacks?": "Be cautious of unsolicited communications, don't share sensitive information, and verify the identity of people before responding.",
     "What is a password policy?": "A password policy is a set of rules designed to improve computer security by encouraging users to create strong, complex passwords.",
     "What is cybersecurity awareness training?": "Cybersecurity awareness training teaches employees or users how to recognize and avoid cybersecurity threats, like phishing and malware.",
-    "What is multifactor authentication (MFA)?": "MFA requires users to provide two or more verification factors to gain access to a system, such as a password and a security token."
+    "What is multifactor authentication (MFA)?": "MFA requires users to provide two or more verification factors to gain access to a system, such as a password and a security token.",
     };
 
     function getResponse(userInput) {
