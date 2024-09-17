@@ -113,25 +113,48 @@ document.addEventListener("DOMContentLoaded", function() {
     "What is multifactor authentication (MFA)?": "MFA requires users to provide two or more verification factors to gain access to a system, such as a password and a security token."
     };
 
-function getResponse(input) {
-        // Convert input to lowercase and remove extra spaces for easier matching
-        const cleanedInput = input.toLowerCase().trim();
-        return responses[cleanedInput] || "I'm sorry, I don't have an answer for that question.";
+function sendMessage() {
+        const userInput = inputField.value.trim();
+        if (userInput === "") return;
+
+        // Create user message element
+        const userMessage = document.createElement("div");
+        userMessage.classList.add("message", "user-message");
+        userMessage.textContent = userInput;
+        chatbox.appendChild(userMessage);
+
+        // Auto-scroll chatbox to the latest message
+        chatbox.scrollTop = chatbox.scrollHeight;
+
+        // Clear input field
+        inputField.value = "";
+
+        // Respond to user input
+        setTimeout(function() {
+            const botMessage = document.createElement("div");
+            botMessage.classList.add("message", "bot-message");
+
+            if (responses[userInput.toLowerCase()]) {
+                botMessage.textContent = responses[userInput.toLowerCase()];
+            } else {
+                botMessage.textContent = "Sorry, I don't understand that.";
+            }
+
+            chatbox.appendChild(botMessage);
+            chatbox.scrollTop = chatbox.scrollHeight;
+        }, 500); // Simulate delay
     }
 
-    sendButton.addEventListener("click", function () {
-        const userInput = inputField.value;
-        if (userInput) {
-            const response = getResponse(userInput);
-            chatbox.innerHTML += `<p><strong>You:</strong> ${userInput}</p>`;
-            chatbox.innerHTML += `<p><strong>Bot:</strong> ${response}</p>`;
-            inputField.value = ""; // Clear the input field after sending
-        }
-    });
-
-    inputField.addEventListener("keypress", function (e) {
+    // Event listeners
+    sendButton.addEventListener("click", sendMessage);
+    inputField.addEventListener("keypress", function(e) {
         if (e.key === "Enter") {
-            sendButton.click();
+            sendMessage();
         }
     });
 });
+    
+    
+    
+    
+    
